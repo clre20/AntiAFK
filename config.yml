@@ -1,0 +1,65 @@
+# ==========================================================
+#  AntiAFK 設定檔
+#  缺少的項目會在啟動或 /antiafk reload 時自動補齊，原本的值會保留。
+#  所有顯示文字請到 messages.yml 修改。
+# ==========================================================
+
+afk:
+  # 在禁止掛機的地方，多少秒沒有活動就發出預警（10–86400）
+  # 每個範圍可在 GUI 或 /antiafk set <範圍> time 另外設定
+  afk-time: 300
+  # 預警後再過多少秒仍在掛機，就執行動作組的指令（0–86400）
+  action-delay: 60
+  # 多久檢查一次（tick，20 = 1 秒，範圍 10–200）
+  check-interval-ticks: 20
+  # 視角轉動超過幾度才算活動，避免微小抖動被當成在動（0–45）
+  # 只有位置變化（水流、礦車、活塞推動）一律不算活動
+  min-rotation: 0.5
+  # 聊天是否算活動
+  count-chat: true
+  # 輸入指令是否算活動
+  count-commands: true
+  warning:
+    # 預警時顯示標題
+    title: true
+    # 預警時發送聊天訊息
+    chat: true
+    # 預警後恢復活動時發送「已取消」訊息
+    cancel-message: true
+
+worlds:
+  # 沒用 /antiafk world 設定過的世界，預設是否可以掛機：allow（可掛）或 deny（不可掛）
+  default-mode: allow
+
+regions:
+  # 每個世界最多幾個範圍（1–1000）
+  max-per-world: 100
+  # 範圍資料有變更時，每隔幾秒寫入 regions.yml（10–3600），關服時也會存檔
+  auto-save-seconds: 60
+
+gui:
+  # GUI 中掛機時間每次加減幾秒（5–3600）
+  time-step: 30
+
+actions:
+  # 範圍沒有指定動作組、或在世界預設區域掛機時使用的動作組
+  default-profile: default
+  # 動作組：以「控制台身分」依序執行 commands
+  # 可用變數：%player% 玩家名稱、%uuid% 玩家 UUID、%region% 範圍名稱、%world% 世界名稱
+  # repeat-interval：執行後若仍持續掛機，每隔幾秒再執行一次（0 = 不重複，最小 10）
+  # 你可以自由新增、刪除動作組，刪除後不會再被自動補回
+  profiles:
+    default:
+      commands:
+        - "kick %player% 你在禁止掛機的區域掛機過久"
+      repeat-interval: 0
+    notify:
+      commands:
+        - "tellraw @a {\"text\":\"%player% 在 %region% 掛機中\",\"color\":\"gray\"}"
+      repeat-interval: 300
+
+update-checker:
+  # 伺服器啟動時檢查 GitHub 是否有新版本（非同步，不影響開服）
+  check-on-startup: true
+  # 具備 antiafk.version 權限的管理員登入 3 秒後，若有新版本會收到提醒
+  notify-on-join: true
