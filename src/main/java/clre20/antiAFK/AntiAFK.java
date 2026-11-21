@@ -59,7 +59,9 @@ public final class AntiAFK extends JavaPlugin {
         afkManager.trackOnlinePlayers();
         afkManager.start();
 
-        if (configManager.isUpdateCheckOnStartup()) {
+        if (getServer().getPluginManager().isPluginEnabled("HttpHub") && clre20.httpHub.api.HttpHubAPI.isAvailable()) {
+            clre20.httpHub.api.HttpHubAPI.registerUpdateCheck(this, "clre20/AntiAFK", getPluginMeta().getVersion(), "antiafk.version", null);
+        } else if (configManager.isUpdateCheckOnStartup()) {
             updateChecker.checkOnStartup();
         }
         getLogger().info("AntiAFK v" + getPluginMeta().getVersion() + " 已啟用。");

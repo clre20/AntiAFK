@@ -33,3 +33,5 @@ permissions:
   antiafk.bypass:
     description: 不受掛機限制
     default: op
+
+softdepend: [ HttpHub ]

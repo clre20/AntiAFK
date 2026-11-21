@@ -1,6 +1,9 @@
 # AntiAFK
 
-AntiAFK 是一款專為 Paper (Minecraft 26.1.2+) 伺服器設計的區域掛機管理插件。管理員可以用空手右鍵選取範圍，為每個範圍設定「可掛機」或「禁止掛機」，再搭配世界預設值，自由組合出「只有這裡能掛機」或「只有這裡不能掛機」的規則。玩家在禁止掛機的地方閒置過久，會先收到預警，仍不活動則自動以控制台身分執行你設定的指令（踢出、傳送、廣播等）。
+AntiAFK 是一款專為 Paper 26.3 (標準穩定版) (Minecraft 26.1.2+) 伺服器設計的區域掛機管理插件。管理員可以用空手右鍵選取範圍，為每個範圍設定「可掛機」或「禁止掛機」，再搭配世界預設值，自由組合出「只有這裡能掛機」或「只有這裡不能掛機」的規則。玩家在禁止掛機的地方閒置過久，會先收到預警，仍不活動則自動以控制台身分執行你設定的指令（踢出、傳送、廣播等）。
+
+
+> **版本檢查提示**：若伺服器有安裝 [HttpHub](https://github.com/clre20/HttpHub)，本插件自動由 HttpHub 集中處理版本檢查與管理員登入通知，避免各插件自開連線與背景執行緒。
 
 ## 功能特性
 
@@ -137,7 +140,10 @@ actions:
 
 # AntiAFK
 
-AntiAFK is a region-based AFK control plugin for Paper (Minecraft 26.1.2+) servers. Administrators select areas by right-clicking blocks with an empty hand, mark each area as "AFK allowed" or "AFK denied", and combine them with a per-world default to build rules such as "AFK only here" or "no AFK only here". Players who idle too long in a denied area first receive a warning; if they stay inactive, the plugin runs your configured commands as the console (kick, teleport, broadcast, and so on).
+
+> **Update Checker**: When [HttpHub](https://github.com/clre20/HttpHub) is installed, update checks and operator login alerts are handled centrally by HttpHub via virtual threads, preventing redundant background connections.
+
+AntiAFK is a region-based AFK control plugin for Paper 26.3 (標準穩定版) (Minecraft 26.1.2+) servers. Administrators select areas by right-clicking blocks with an empty hand, mark each area as "AFK allowed" or "AFK denied", and combine them with a per-world default to build rules such as "AFK only here" or "no AFK only here". Players who idle too long in a denied area first receive a warning; if they stay inactive, the plugin runs your configured commands as the console (kick, teleport, broadcast, and so on).
 
 ## Features
 
